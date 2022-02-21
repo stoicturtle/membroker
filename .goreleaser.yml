@@ -1,0 +1,45 @@
+# Documentation at http://goreleaser.com
+project_name: membroker
+
+# Environment variables
+env:
+  - GO111MODULE=on
+
+builds:
+  - skip: true
+
+release:
+  name_template: "{{.ProjectName}}-{{.Version}}"
+  github:
+    owner: stoicturtle
+    name: membroker
+  header: |
+    ## membroker ({{ .Tag }})
+    New release!
+    
+    Always verify that the GPG signature of the checksum was signed with the fingerprint {{ .Env.GPG_FINGERPRINT }}.
+
+source:
+  enabled: true
+  name_template: '{{ .ProjectName }}-{{ .Version }}'
+  format: tar.gz
+
+signs:
+  -
+    artifacts: all
+
+    args:
+      - "--batch"
+      - "-u"
+      - "{{ .Env.GPG_FINGERPRINT }}"
+      - "--output"
+      - "${signature}"
+      - "--detach-sign"
+      - "${artifact}"
+
+changelog:
+  filters:
+    exclude:
+      - '\[ci release\]'
+      - '^docs:'
+      - '^test:'
