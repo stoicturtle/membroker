@@ -1,4 +1,4 @@
-module github.com/stoicturtle/membroker
+module go.stoicturtle.io/membroker
 
 go 1.18
 

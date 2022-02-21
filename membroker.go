@@ -1,4 +1,4 @@
-package membroker
+package membroker // import "go.stoicturtle.io/membroker"
 
 import (
 	"context"

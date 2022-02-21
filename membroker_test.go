@@ -8,7 +8,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"github.com/stoicturtle/membroker"
+	"go.stoicturtle.io/membroker"
 )
 
 const defaultPrune = 2 * time.Minute
